@@ -1,0 +1,7 @@
+controllers:
+    resource: ../../src/Crypto/Api/v1/Controller/
+    type: annotation
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation
