@@ -17,14 +17,19 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/Entity/'
+            - '../src/Crypto/Entity/'
             - '../src/Kernel.php'
 
-    # controllers are imported separately to make sure services can be injected
-    # as action arguments even if you don't extend any base controller class
-    App\Controller\:
-        resource: '../src/Controller/'
-        tags: ['controller.service_arguments']
+    App\Crypto\Api\v1\Controller\:
+        resource: '../src/Crypto/Api/v1/Controller/'
+        tags: [ 'controller.service_arguments' ]
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Crypto\Source\InternalClient\Coinbase\CoinbaseInternalClient: ~
+
+    #inject needed client
+    App\Crypto\Source\InternalClient\Factory\InternalClientFactory:
+        arguments:
+            - '@App\Crypto\Source\InternalClient\Coinbase\CoinbaseInternalClient'
