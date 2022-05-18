@@ -9,7 +9,7 @@ use App\Crypto\Entity\Price;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class PriceFixtures extends Fixture
+class PriceTestFixtures extends Fixture
 {
     private const EXCLUDED_PAIR = 'BTC-CHF';
 
@@ -47,7 +47,7 @@ class PriceFixtures extends Fixture
 
     private function getCurrencyPair(string $refName): CurrencyPair
     {
-        return $this->getReference(CurrencyPairFixtures::getReferenceName($refName));
+        return $this->getReference(CurrencyPairTestFixtures::getReferenceName($refName));
     }
 
     /**
@@ -56,7 +56,7 @@ class PriceFixtures extends Fixture
     public function getDependencies()
     {
         return [
-            CurrencyPairFixtures::class
+            CurrencyPairTestFixtures::class
         ];
     }
 }

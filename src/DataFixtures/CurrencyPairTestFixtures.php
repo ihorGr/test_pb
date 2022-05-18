@@ -8,7 +8,7 @@ use App\Crypto\Entity\CurrencyPair;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class CurrencyPairFixtures extends Fixture
+class CurrencyPairTestFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
