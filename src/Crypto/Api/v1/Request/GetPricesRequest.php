@@ -20,12 +20,6 @@ class GetPricesRequest implements ApiRequestInterface
     private $currencyPair;
 
     /**
-     * @Assert\Type("string")
-     * @Assert\Length(min=3)
-     */
-    private $interval;
-
-    /**
      * @Assert\NotBlank
      * @Assert\Type("string")
      * @Assert\Length(min=3)
@@ -44,7 +38,6 @@ class GetPricesRequest implements ApiRequestInterface
     private function __construct(?array $data)
     {
         $this->currencyPair = $data['currency_pair'] ?? null;
-        $this->interval = $data['interval'] ?? null;
         $this->from = $data['from'] ?? null;
         $this->to = $data['to'] ?? null;
     }
@@ -55,14 +48,6 @@ class GetPricesRequest implements ApiRequestInterface
     public function getCurrencyPair()
     {
         return $this->currencyPair;
-    }
-
-    /**
-     * @return mixed|null
-     */
-    public function getInterval()
-    {
-        return $this->interval;
     }
 
     /**

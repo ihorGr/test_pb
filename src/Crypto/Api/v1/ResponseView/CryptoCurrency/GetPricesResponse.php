@@ -9,7 +9,6 @@ use App\Crypto\Api\v1\ResponseView\ResultViewInterface;
 class GetPricesResponse implements ResultViewInterface
 {
     public const CURRENCY_PAIR = 'currency_pair';
-    public const INTERVAL = 'interval';
     public const PRICES = 'prices';
 
     /**

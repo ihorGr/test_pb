@@ -38,9 +38,9 @@ class CryptoCurrencyController extends AbstractApiController
 
         } catch (ResponseViewInstanceException $e) {
             $logger->critical($e->getMessage());
-            return new JsonResponse(['errors' => 'Internal error. Please try again later']);
+            return new JsonResponse(['errors' => 'Internal error. Please try again later'], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         } catch (\RuntimeException $e) {
-            return new JsonResponse(['errors' => $e->getMessage()]);
+            return new JsonResponse(['errors' => $e->getMessage()], JsonResponse::HTTP_BAD_REQUEST);
         }
 
         return new JsonResponse($dataResultView, JsonResponse::HTTP_OK);
