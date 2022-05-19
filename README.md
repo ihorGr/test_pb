@@ -15,7 +15,7 @@
 
 ## Api
 ### Получение курса криптовалюты  <br>
-Получение курса криптовалюты за пределенный промежуток времени.
+Получение курса криптовалюты за определенный промежуток времени.
 
 #### HTTP Request
 `GET /api/get_prices?currency_pair={currency_pair}&from={from}&to={to}`
@@ -27,7 +27,7 @@
 -. `to` timestring (required) - дата конца диапазона, имеет строгий формат Y-m-d H:i:s<br>
 
 Example: 
-`/api/get_prices?currency_pair=BTC-USD&interval=ghw&from=2022-05-19 06:00:00&to=2022-05-19 10:10:00`
+`/api/get_prices?currency_pair=BTC-USD&from=2022-05-19 06:00:00&to=2022-05-19 10:10:00`
 
 #### HTTP Response
 
