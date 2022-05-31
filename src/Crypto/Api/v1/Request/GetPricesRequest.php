@@ -21,7 +21,7 @@ class GetPricesRequest implements ApiRequestInterface
 
     /**
      * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\DateTime()
      * @Assert\Length(min=3)
      */
     private $from;
@@ -68,7 +68,7 @@ class GetPricesRequest implements ApiRequestInterface
 
     public static function fromRequest(?array $requestData): self
     {
-        return new static($requestData);
+        return new self($requestData);
     }
 
     public function getBase()

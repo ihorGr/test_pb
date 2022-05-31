@@ -26,7 +26,7 @@ class ListResultView implements ResultViewInterface
             }
 
             if (!$resultView instanceof ResultViewInterface) {
-                ResponseViewInstanceException::fromWrongItemInstance(get_class($resultView));
+                throw ResponseViewInstanceException::fromWrongItemInstance(get_class($resultView));
             }
         }
 

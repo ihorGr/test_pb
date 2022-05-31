@@ -8,9 +8,15 @@ use App\Crypto\Api\v1\Request\GetPricesRequest;
 use App\Crypto\Api\v1\ResponseView\CryptoCurrency\GetPricesResponse;
 use App\Crypto\Api\v1\ResponseView\CryptoCurrency\PriceView;
 use App\Crypto\Api\v1\ResponseView\ListResultView;
+use App\Crypto\Storage\Price\Provider\DTO\PriceDto;
 
 class Resolver implements ResolverInterface
 {
+    /**
+     * @param GetPricesRequest $getPricesRequest
+     * @param PriceDto[] $pricesList
+     * @return GetPricesResponse
+     */
     public function resolveGetPrices(GetPricesRequest $getPricesRequest, array $pricesList): GetPricesResponse
     {
         $resultView = [
@@ -32,11 +38,11 @@ class Resolver implements ResolverInterface
         return new ListResultView($pricesViewList);
     }
 
-    private function resolvePrice(array $price): PriceView
+    private function resolvePrice(PriceDto $price): PriceView
     {
         $priceView = [
-            PriceView::VALUE => $price['value'] ?? null,
-            PriceView::TIME => $price['time'] ?? null
+            PriceView::VALUE => $price->getValue(),
+            PriceView::TIME => $price->getTime()
         ];
 
         return new PriceView($priceView);

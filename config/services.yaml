@@ -27,9 +27,15 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
+    App\Crypto\Source\InternalClient\InternalClientInterface:
+        class: App\Crypto\Source\InternalClient\Coinbase\CoinbaseInternalClient
+
     App\Crypto\Source\InternalClient\Coinbase\CoinbaseInternalClient: ~
 
     #inject needed client
     App\Crypto\Source\InternalClient\Factory\InternalClientFactory:
         arguments:
-            - '@App\Crypto\Source\InternalClient\Coinbase\CoinbaseInternalClient'
+            - '@App\Crypto\Source\InternalClient\InternalClientInterface'
+
+    App\Crypto\Storage\Price\Provider\ProviderInterface:
+        class: App\Crypto\Storage\Price\Provider\ProviderProxy
